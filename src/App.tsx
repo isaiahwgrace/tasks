@@ -21,7 +21,7 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                UD CISC275 with React Hooks and etc
+                UM COS420 with React Hooks and TypeScript
             </header>
 
             <h1>new header</h1>
@@ -43,7 +43,6 @@ function App(): JSX.Element {
             <div>
                 <Container>
                     <Row>
-                        /COS420/i
                         <Col>
                             <div
                                 style={{
