@@ -43,7 +43,6 @@ function App(): JSX.Element {
             <div>
                 <Container>
                     <Row>
-                        /COS420/i
                         <Col>
                             <div
                                 style={{
