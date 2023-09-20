@@ -21,11 +21,7 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-<<<<<<< HEAD
-                UD CISC275 with React Hooks and etc
-=======
                 UM COS420 with React Hooks and TypeScript
->>>>>>> upstream/task-functions
             </header>
 
             <h1>new header</h1>
