@@ -90,7 +90,10 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    const hasRGB = (str: string): boolean =>
+        str === "red" || str === "blue" || str == "green" || str === "";
+
+    return colors.every(hasRGB);
 }
 
 /**
