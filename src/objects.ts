@@ -1,7 +1,8 @@
+import exp from "constants";
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
- * Create a new blank question with the given `id`, `name`, and `type. The `body` and
+ * Create a new blank question with the given `id`, `name`, and  `type. The `body` and
  * `expected` should be empty strings, the `options` should be an empty list, the `points`
  * should default to 1, and `published` should default to false.
  */
@@ -10,7 +11,18 @@ export function makeBlankQuestion(
     name: string,
     type: QuestionType
 ): Question {
-    return {};
+    const blankQuestion: Question = {
+        id: id,
+        name: name,
+        body: "",
+        type: type,
+        options: [],
+        expected: "",
+        points: 1,
+        published: false
+    };
+
+    return blankQuestion;
 }
 
 /**
@@ -21,7 +33,15 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
-    return false;
+    const filteredAnswer = answer.trim().toLowerCase();
+
+    if (typeof question.expected === "number") {
+        return filteredAnswer === question.expected;
+    }
+
+    const strExpected = question.expected.toLowerCase();
+
+    return filteredAnswer === strExpected;
 }
 
 /**
