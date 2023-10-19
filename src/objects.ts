@@ -113,7 +113,6 @@ export function toMarkdown(question: Question): string {
  */
 export function renameQuestion(question: Question, newName: string): Question {
     const newQuestion = { ...question, name: newName };
-
     return newQuestion;
 }
 
@@ -134,7 +133,14 @@ export function publishQuestion(question: Question): Question {
  * The `published` field should be reset to false.
  */
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
-    return oldQuestion;
+    const newQuestion = {
+        ...oldQuestion,
+        id: id,
+        name: `Copy of ${oldQuestion.name}`,
+        published: false
+    };
+
+    return newQuestion;
 }
 
 /**
