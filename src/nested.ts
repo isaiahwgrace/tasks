@@ -40,7 +40,11 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
-    return null;
+    const matchedQuestion = questions.find(
+        (question: question) => question.id === id
+    );
+
+    return matchedQuestion ? matchedQuestion : null;
 }
 
 /**
