@@ -9,6 +9,7 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
     const publishedQuestions: Question[] = questions.filter(
         (question: Question): boolean => question.published
     );
+
     return publishedQuestions;
 }
 
@@ -18,7 +19,17 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    //my assumptions will be the death of me.
+    //was originally using &&s
+
+    const nonEmptyQuestions: Question[] = questions.filter(
+        (question: Question): boolean =>
+            Boolean(question.body) ||
+            Boolean(question.expected) ||
+            Boolean(question.options.length)
+    );
+
+    return nonEmptyQuestions;
 }
 
 /***
