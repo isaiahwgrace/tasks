@@ -64,7 +64,16 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    //rm questions with no name (just in case)
+    const withNames: Question[] = questions.filter(
+        (question: Question): boolean => Boolean(question.name)
+    );
+
+    const names: string[] = withNames.map(
+        (question: Question): string => question.name
+    );
+
+    return names;
 }
 
 /***
