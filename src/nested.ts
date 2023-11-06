@@ -80,7 +80,12 @@ export function getNames(questions: Question[]): string[] {
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    const pointSum = questions.reduce(
+        (sum: number, question: Question) => sum + question.points,
+        0 // initial value == 0
+    );
+
+    return pointSum;
 }
 
 /***
