@@ -97,11 +97,17 @@ export function toMarkdown(question: Question): string {
 
     const mdQuestion = `${nameLine}\n${bodyLine}`;
 
+    function questionToStr(question: Question) {
+        const questionOptions: string[] = question.options.map(
+            (str: string): string => "- " + str
+        );
+
+        return questionOptions.join("\n");
+    }
+
     const optionLines = //good lord help me   the things i do for love
         question.type === "multiple_choice_question"
-            ? question.options
-                  .map((str: string): string => "- " + str)
-                  .join("\n")
+            ? questionToStr(question)
             : "";
 
     return mdQuestion + (optionLines ? "\n" + optionLines : "");
