@@ -143,9 +143,22 @@ export function toCSV(questions: Question[]): string {
  */
 export function makeAnswers(questions: Question[]): Answer[] {
     interface Answer {
-        questionId;
+        questionId: number;
+        text: string;
+        submitted: boolean;
+        correct: boolean;
     }
-    return [];
+
+    const answers: Answer[] = questions.map((question: Question): Answer => {
+        return {
+            questionId: question.id,
+            text: "",
+            submitted: false,
+            correct: false
+        };
+    });
+
+    return answers;
 }
 
 /***
