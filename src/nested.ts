@@ -269,7 +269,32 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    function isNoLongerMultipleChoice(
+        question: Question,
+        newType: QuestionType
+    ): string[] | [] {
+        if (
+            question.type === "multiple_choice_question" &&
+            newType !== "multiple_choice_question"
+        ) {
+            return [];
+        } else {
+            return question.options;
+        }
+    }
+
+    //i wanted to ternary this but there's a collision between prettier and the linter :(
+    const withChangedType = questions.map((question: Question): Question => {
+        if (question.id === targetId) {
+            return {
+                ...question,
+                type: newQuestionType,
+                options: isNoLongerMultipleChoice(question, newQuestionType)
+            };
+        } else return { ...question };
+    });
+
+    return withChangedType;
 }
 
 /**
