@@ -131,7 +131,9 @@ export function toCSV(questions: Question[]): string {
         questionToStr(question)
     );
 
-    return "id,name,options,points,published\n" + questionCSV.join("\n");
+    const headerStr = "id,name,options,points,published\n";
+
+    return headerStr + questionCSV.join("\n");
 }
 
 /**
@@ -140,6 +142,9 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
+    interface Answer {
+        questionId;
+    }
     return [];
 }
 
