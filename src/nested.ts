@@ -209,7 +209,32 @@ export function addNewQuestion(
     name: string,
     type: QuestionType
 ): Question[] {
-    return [];
+    function makeBlankQuestion(
+        id: number,
+        name: string,
+        type: QuestionType
+    ): Question {
+        const blankQuestion: Question = {
+            id: id,
+            name: name,
+            body: "",
+            type: type,
+            options: [],
+            expected: "",
+            points: 1,
+            published: false
+        };
+
+        return blankQuestion;
+    }
+
+    const questionsDeepCopy = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+
+    questionsDeepCopy.push(makeBlankQuestion(id, name, type));
+
+    return questionsDeepCopy;
 }
 
 /***
