@@ -203,7 +203,7 @@ export function sameType(questions: Question[]): boolean {
  * except that a blank question has been added onto the end. Reuse the `makeBlankQuestion`
  * you defined in the `objects.ts` file.
  */
-export function addNewQuestion(
+export function addNewQuestion( // I love typescript but it looks horrendous
     questions: Question[],
     id: number,
     name: string,
