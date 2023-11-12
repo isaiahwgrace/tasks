@@ -313,7 +313,28 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    function insertOption(question: Question): Question {
+        if (targetOptionIndex === -1) {
+            const newOptions = [...question.options, newOption];
+            return { ...question, options: newOptions };
+        } else {
+            const newOptions = question.options.with(
+                targetOptionIndex,
+                newOption
+            );
+            return { ...question, options: newOptions };
+        }
+    }
+
+    const newQuestions = questions.map((question: Question): Question => {
+        if (question.id === targetId) {
+            return insertOption(question);
+        } else {
+            return { ...question };
+        }
+    });
+
+    return newQuestions;
 }
 
 /***
